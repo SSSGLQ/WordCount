@@ -27,7 +27,7 @@ wc.exe -o outputFile.txt //将结果输出到指定文件outputFile.txt
 
 wc.exe -s  //递归处理目录下符合条件的文件
 
-wc.exe -a file.c //返回更复杂的数据（代码行/空行/注释行）参考编译器词法分析
+wc.exe -a file.c //返回更复杂的数据（代码行/空行/注释行）
 
 wc.exe -e stopList.txt //停用词表，统计文件单词总数时，不统计该表中的单词
 
