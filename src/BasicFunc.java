@@ -1,7 +1,6 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BasicFunc {
     /**
@@ -36,8 +35,10 @@ public class BasicFunc {
      * @param fileName
      * @return
      */
-    public static int numOfWord(String fileName){
+    public static List<String> numOfWord(String fileName){
         int numOfWord=0;
+        String str="";
+        List<String> wordList=new ArrayList<>();
         File file = new File(fileName);
         if (!file.exists()) {
             System.out.println("文件不存在!");
@@ -53,20 +54,27 @@ public class BasicFunc {
                 if((char)tempchar==' '){
                     if(!isTheHeadOfLine){
                         ++numOfWord;
+                        wordList.add(str);
+                        str="";
                     }
                     while((tempchar=reader.read())==' ');
                 }
                 if((char)tempchar==',') {
                     if(!isTheHeadOfLine) {
                         ++numOfWord;
+                        wordList.add(str);
+                        str="";
                     }
                     while((tempchar=reader.read())==',');
                 }
                 if((char)tempchar=='\n') {
                     ++numOfWord;
+                    wordList.add(str);
+                    str="";
                     isTheHeadOfLine=true;
                     continue;
                 }
+                str+=(char)tempchar;
                 if(isTheHeadOfLine){
                     isTheHeadOfLine=false;
                 }
@@ -74,11 +82,12 @@ public class BasicFunc {
             reader.close();
             if(numOfChar(fileName)!=0){
                 ++numOfWord;
+                wordList.add(str);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return numOfWord;
+        return wordList;
     }
 
     /**
