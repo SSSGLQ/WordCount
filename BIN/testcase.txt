@@ -1,0 +1,10 @@
+wc.exe -c char.c
+wc.exe -c charwithspace.c
+wc.exe -w -l wordtest.c
+wc.exe -l helloworld.c
+wc.exe -a atest.c
+wc.exe -w stoptest.c -e stoplist.txt
+wc.exe -s -a -w *.c
+wc.exe -s -a -c -w *.c -e stoplist.txt -o output.txt
+wc.exe -c -w -l helloworld.c -o output.txt
+wc.exe -c -w -l -s -a *.c -e stoplist.txt -o output.txt
